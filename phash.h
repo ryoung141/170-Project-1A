@@ -3,10 +3,10 @@
  *http://www.algolist.net/Data_structures/Hash_table/Chaining
  *
  **/
-
 #ifdef RWLOCK
 #include "rwlock.h"
 #endif
+
 
 class LinkedHashEntry {
 private:

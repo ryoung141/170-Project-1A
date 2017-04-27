@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include "phash.h"
+#include "rwlock.h"
 
 LinkedHashEntry:: LinkedHashEntry(int key, int value) {
             this->key = key;
@@ -177,7 +178,7 @@ HashMap:: ~HashMap() {
 #ifdef RWLOCK
 	    lock.doneRead();
 	    lock.doneWrite();
-	    delete lock;
+	    // delete &lock;
 #else
 	    pthread_mutex_destroy(&mutex);
 #endif
