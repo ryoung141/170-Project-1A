@@ -8,19 +8,25 @@
 class RWLock{
 private:
 #ifdef RWLOCK
-  pthread_mutex_t read_lock;
-  pthread_mutex_t write_lock;
-#else 
-  pthread_mutex_t lock;; 
+  
+  pthread_cond_t read;
+  pthread_cond_t write;
+  
+  int reading;
+  int read_wait;
+  int writing;
+  int write_wait;
+  
 #endif
- 
-public:
+  pthread_mutex_t lock;
+  
+ public:
     	RWLock();
     	~RWLock();
-    //Reader
+	//Reader
     	void startRead();
     	void doneRead();
-    // Writer
+	// Writer
     	void startWrite();
     	void  doneWrite();
 };
