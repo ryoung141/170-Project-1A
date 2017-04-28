@@ -52,7 +52,7 @@ HashMap::HashMap() {
 
 int 
 HashMap:: get(int key) {
-  usleep(1);
+  //  usleep(1);
   rwlock.startRead();
             int hash = (key % TABLE_SIZE);
             if (table[hash] == NULL){
