@@ -3,9 +3,7 @@
  *http://www.algolist.net/Data_structures/Hash_table/Chaining
  *
  **/
-#ifdef RWLOCK
 #include "rwlock.h"
-#endif
 
 
 class LinkedHashEntry {
@@ -27,11 +25,7 @@ public:
 class HashMap {
 private:
       LinkedHashEntry **table;
-#ifdef RWLOCK
-      RWLock lock;
-#else
-      pthread_mutex_t mutex;
-#endif
+      RWLock rwlock;
 public:
       HashMap(); 
       int get(int key); 
