@@ -25,7 +25,11 @@ public:
 class HashMap {
 private:
       LinkedHashEntry **table;
+#ifndef FINEGRAIN
       RWLock rwlock;
+#else
+      RWLock* rwlock_table;
+#endif
 public:
       HashMap(); 
       int get(int key); 

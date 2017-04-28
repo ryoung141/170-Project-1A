@@ -73,7 +73,7 @@ RWLock:: doneWrite(){
 #ifdef RWLOCK
   pthread_mutex_lock(&lock);
   writing--;
-  if(writing == 0 && write_wait > 0){
+  if (write_wait > 0){
     pthread_cond_signal(&write);
   }
   else{ //no writers waiting --> readers get signaled
