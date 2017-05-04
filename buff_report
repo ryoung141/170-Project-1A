@@ -1,0 +1,52 @@
+Group Members: Richard Young & James Yang
+
+-----------WORK-----------
+RICHARD: We split the work evenly, we collaboratively worked on task 1, I focused more on the semaphore and a little on the condition variables, then
+focused my efforts on Task 3.
+
+JAMES:
+
+----------TASK 1----------
+Most of the work for task 1 was setting up things for the future tasks to build off of. For example,
+setting up rwlock.cc for future uses even though the functions for the actual RW and Lock had not yet
+been implemented. It also required importing files from our previous Project-1A (hashchain.h, hashchain.cc, rwlock.h, rwlock.cc)
+even though we ended up utilizing the provided rwlock.cc file. Largely, the implementation of each part of the rwlock
+was similar enough to our past iteration so reimplementing it using new objects wasn't as much of a stretch-- the challenge
+is to get the new objects implemented well. Utilizing preprocessor symbols, we are able to use 3 locks at the price of 1 file,
+if P1_RWLOCK is defined, then the lock uses the listed counters and condition symbols, in conjunction with a lock to optimize
+run-time. If P1_SEMAPHORE is defined, then the lock acts as a semaphore of value 1, using the native P() and V() commands given.
+Lastly, if neither is defined, then the rwlock object acts as a NachOS lock. 
+
+----------TASK 2----------
+
+
+----------TASK 3----------
+We realized that not all of the test cases would pass in the previous tasks if the condition object wasn't implemented, so we did that
+part earlier than the others. Honestly, most of the work was just setting up the queues for the rwlock and ensuring it didn't cause 
+unnecessary waiting times. Luckily we had a blueprint to follow from project 1A!
+
+
+
+COMPILATION & RUNNING
+    - To compile, navigate to nachos/code/thread and type 'make' in the command line
+    - For each type of lock there will be an associated executable:
+	- Semaphore: ./nachos_sem (for testing add the '-q' and '-1' flags)
+	- NachOS Lock: ./nachos_lock (see testing above)
+	- Read-Write Lock: ./nachos_rw (see testing above)
+
+MODIFIED FILES
+ - Changed files:
+    - rwlock.cc: implemented 3 versions semaphore, lock, and read-write
+    - rwlock.h : edited original 1A version for compatibility with NachOS
+    - synch.cc : implemented Lock and Condition objects and corresponding functions
+    - threadtest.cc : changed from original version to the version provided on the cs170 website
+ - Added files:
+    - hashchain.cc: necessary addition in order to test hashmap
+    - hashchain.h : required to use hashchain.cc
+
+COMPLETION STATUS
+ - Everything passed it's tests on submit.cs, and even after repeated testing locally the functions held up.
+
+
+
+
